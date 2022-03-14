@@ -10,47 +10,56 @@ namespace WSUniversalLib
     {
         public static int GetQuantityForProduct(int productType, int materialType, int count, float width, float length)
         {
-            if (count > 0 && width > 0 && length > 0)
-            {              
-                float CountArea = (width * length) * count, ProductTypeVarification;
-                int ResultindValue;
-                switch (productType)
+            try
+            {
+                if (count > 0 && width > 0 && length > 0)
                 {
-                    case 1:
-                        ProductTypeVarification=GetQuantityWithoutMarriage(1, CountArea);
-                        break;
-                    case 2:
-                        ProductTypeVarification=GetQuantityWithoutMarriage(2, CountArea);
-                        break;
-                    case 3:
-                        ProductTypeVarification=GetQuantityWithoutMarriage(3, CountArea);
-                        break;
-                    default:
+                    float CountArea = (width * length) * count, ProductTypeVarification;
+                    int ResultindValue;
+                    switch (productType)
+                    {
+                        case 1:
+                            ProductTypeVarification = GetQuantityWithoutMarriage(1, CountArea);
+                            break;
+                        case 2:
+                            ProductTypeVarification = GetQuantityWithoutMarriage(2, CountArea);
+                            break;
+                        case 3:
+                            ProductTypeVarification = GetQuantityWithoutMarriage(3, CountArea);
+                            break;
+                        default:
+                            return -1;
+                    }
+                    if (ProductTypeVarification == -1)
+                    {
                         return -1;
+                    }
+                    else
+                    {
+                        switch (materialType)
+                        {
+                            case 1:
+                                ResultindValue = Convert.ToInt32(GetQuantity(1, ProductTypeVarification));
+                                return ResultindValue;
+                            case 2:
+                                ResultindValue = Convert.ToInt32(GetQuantity(2, ProductTypeVarification));
+                                return ResultindValue;
+                            default:
+                                return -1;
+                        }
+                    }
                 }
-                if (ProductTypeVarification == -1)
+                else
                 {
                     return -1;
                 }
-                else 
-                {
-                    switch (materialType)
-                    {
-                        case 1:
-                            ResultindValue = Convert.ToInt32(GetQuantity(1, ProductTypeVarification));
-                            return ResultindValue;
-                        case 2:
-                            ResultindValue = Convert.ToInt32(GetQuantity(2, ProductTypeVarification));
-                            return ResultindValue;
-                        default:
-                            return - 1;
-                    }
-                }
             }
-            else 
+            catch
             {
-                return -1;
+
+                return - 1;
             }
+            
             
         }
 

@@ -5,14 +5,14 @@ using WSUniversalLib;
 namespace UnitTests
 {
     [TestClass]
-    public class UnitTest1
+    public class EasyTest
     {
         [TestMethod]
         public void GetQuantityForProduct_UsualValue()
         {
             int actual, expected;
             expected = 114146;
-            actual = Calculation.GetQuantityForProduct(3, 1, 15, 20,45);
+            actual = Calculation.GetQuantityForProduct(3, 1, 15, 20, 45);
             Assert.AreEqual(expected, actual);
         }
 
@@ -99,4 +99,5 @@ namespace UnitTests
             Assert.AreEqual(expected, actual);
         }
     }
+    
 }
