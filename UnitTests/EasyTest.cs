@@ -11,7 +11,7 @@ namespace UnitTests
         public void GetQuantityForProduct_UsualValue()
         {
             int actual, expected;
-            expected = 114146;
+            expected = 114148;
             actual = Calculation.GetQuantityForProduct(3, 1, 15, 20, 45);
             Assert.AreEqual(expected, actual);
         }

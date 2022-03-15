@@ -39,10 +39,10 @@ namespace WSUniversalLib
                         switch (materialType)
                         {
                             case 1:
-                                ResultindValue = Convert.ToInt32(GetQuantity(1, ProductTypeVarification));
+                                ResultindValue = Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(GetQuantity(1, ProductTypeVarification))));
                                 return ResultindValue;
                             case 2:
-                                ResultindValue = Convert.ToInt32(GetQuantity(2, ProductTypeVarification));
+                                ResultindValue = Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(GetQuantity(2, ProductTypeVarification))));
                                 return ResultindValue;
                             default:
                                 return -1;
@@ -83,12 +83,18 @@ namespace WSUniversalLib
             switch (materialType)
             {
                 case 1:
-                    return CountWithoutMarriage * 1.003f;
+                    return ((CountWithoutMarriage/99.7f)*0.3f)+ CountWithoutMarriage;
                 case 2:
-                    return CountWithoutMarriage * 1.0012f;
+                    return ((CountWithoutMarriage / 99.88f) * 0.12f) + CountWithoutMarriage;
                 default:
                     return -1;
             }
         }
+
+
+
     }
+
+
+    
 }
